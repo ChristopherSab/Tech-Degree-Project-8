@@ -52,7 +52,6 @@ header input {
 
 .employee-box {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     border: 1px solid var(--color-secondary);
     background-color: white;
@@ -87,13 +86,13 @@ footer p {
 
     .employee-sections {
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .employee-box {
         margin: 1rem;
+        width: 320px;
     }
 }
 
@@ -110,8 +109,14 @@ footer p {
     }
 
     .employee-box {
-        margin: 0.8rem;
+        margin: 0.5rem;
         padding: .5rem;
+        width: 305px;
+        transition: .30s ease-in;
+    }
+
+    .employee-box:hover {
+        transform: scale(1.05);
     }
 
 }
