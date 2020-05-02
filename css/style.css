@@ -43,12 +43,86 @@ header input {
 /*--------------------*/
 /* Main Section Styles*/
 /*--------------------*/
+
+.modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    /*overflow: auto;*/
+    background-color: rgba(0,0,0, 0.5);
+}
+
+.modal-content{
+    background-color: white;
+    margin: 8% auto;
+    padding: 1.3rem 2rem;
+    width: 35%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.modal-content img {
+    border-radius: 50%;
+}
+
+.close-button{
+    float: right;
+    font-size: 2.5rem;
+}
+
+.close-button:hover,
+.close-button:focus {
+    cursor: pointer;
+
+}
+
+.left-arrow-btn {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    z-index: 2;
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-left: 0.5rem;
+    transition: 0.2s ease-in-out;
+}
+
+.right-arrow-btn {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    z-index: 2;
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-right: 0.5rem;
+    transition: 0.2s ease-in-out;
+}
+
+.right-arrow-btn:hover,
+.left-arrow-btn:hover,
+.right-arrow-btn:focus,
+.left-arrow-btn:focus {
+    color: var(--color-primary);
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#line-break{
+    color: var(--color-primary)
+}
+
 .employee-sections {
     margin: 0 0.5rem;
 }
 
-.employee-box {
-    display: flex;
+.card {
+   display: flex;
     justify-content: center;
     border: 1px solid var(--color-secondary);
     background-color: white;
@@ -86,7 +160,7 @@ footer p {
         justify-content: center;
     }
 
-    .employee-box {
+    .card {
         margin: 1rem;
         width: 320px;
     }
@@ -104,14 +178,14 @@ footer p {
         justify-content: space-evenly;
     }
 
-    .employee-box {
+    .card {
         margin: 0.5rem;
         padding: .5rem;
         width: 305px;
         transition: .30s ease-in;
     }
 
-    .employee-box:hover {
+    .card:hover {
         transform: scale(1.05);
     }
 }
