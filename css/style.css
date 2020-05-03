@@ -74,12 +74,14 @@ header input {
 .close-button{
     float: right;
     font-size: 2.5rem;
+    color: var(--color-secondary);
+    transition: 0.2s ease-out;
 }
 
 .close-button:hover,
 .close-button:focus {
     cursor: pointer;
-
+    color: var(--color-primary);
 }
 
 .left-arrow-btn {

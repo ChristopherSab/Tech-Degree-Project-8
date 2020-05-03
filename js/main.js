@@ -39,8 +39,19 @@ function createEmployee(data) {
       document.querySelectorAll('.card').forEach((card, index) => {
         card.addEventListener('click', () => {
             employeeModal(data.results[index]);
+
+            document.querySelector('.right-arrow-btn').addEventListener('click', () => {
+                employeeModal(data.results[index + 1]);
+              })
+
+            document.querySelector('.left-arrow-btn').addEventListener('click', () => {
+                employeeModal(data.results[index - 1]);
+             })
+
         });
       });
+
+ 
     }
 
 //------------------------------------- 
@@ -75,16 +86,15 @@ function createEmployee(data) {
 
         modalCancel.addEventListener('click', () => {
             modal.style.display = 'none';
-            console.log('The cancel button is working properly');
         })
 
 }
 
 
 
-//Left Arrow Button
+//Arrow Buttons
 const previousEmployee = document.getElementsByClassName('left-arrow-btn'[0]);
-
-//Right Arrow Button
 const nextEmployee = document.getElementsByClassName('right-arrow-btn')[0];
+
+
 
