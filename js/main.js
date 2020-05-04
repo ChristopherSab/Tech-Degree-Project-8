@@ -4,6 +4,9 @@
 
 const employeeBox = document.getElementsByClassName('employee-box');
 const modal = document.getElementsByClassName('modal-container')[0];
+//Arrow Buttons
+const previousEmployee = document.getElementsByClassName('left-arrow-btn'[0]);
+const nextEmployee = document.getElementsByClassName('right-arrow-btn')[0];
 const url = 'https://randomuser.me/api/?results=12';
 
 //------------------------------------- 
@@ -37,22 +40,25 @@ function createEmployee(data) {
       }  
 
       document.querySelectorAll('.card').forEach((card, index) => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (event) => {
             employeeModal(data.results[index]);
-
-            document.querySelector('.right-arrow-btn').addEventListener('click', () => {
+            
+           /* document.querySelector('.right-arrow-btn').addEventListener('click', () => {
                 employeeModal(data.results[index + 1]);
               })
 
             document.querySelector('.left-arrow-btn').addEventListener('click', () => {
                 employeeModal(data.results[index - 1]);
-             })
+             })*/
 
         });
+
       });
 
  
     }
+
+
 
 //------------------------------------- 
 // Employee Modal Popup
@@ -88,13 +94,29 @@ function createEmployee(data) {
             modal.style.display = 'none';
         })
 
+
+        //Event Listener To Move to next or previous employee
+        modal.addEventListener('click', (event) => {
+     
+            if(event.target.className == 'right-arrow-btn'){
+                console.log('The RIGHT Arrow is Working');
+            }
+
+            if(event.target.className == 'left-arrow-btn'){
+                console.log('The LEFT Arrow is Working');
+            }
+
+        })
+
 }
 
 
 
-//Arrow Buttons
-const previousEmployee = document.getElementsByClassName('left-arrow-btn'[0]);
-const nextEmployee = document.getElementsByClassName('right-arrow-btn')[0];
+
+
+
+
+
 
 
 
