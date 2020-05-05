@@ -1,13 +1,16 @@
 //------------------------------------- 
 //  MAIN VARIABLES
 //-------------------------------------
+let search = document.getElementById('search-input');
 const employees = [];
 const employeeBox = document.getElementsByClassName('employee-box');
 const modal = document.getElementsByClassName('modal-container')[0];
+
 //Arrow Buttons
 const previousEmployee = document.getElementsByClassName('left-arrow-btn'[0]);
 const nextEmployee = document.getElementsByClassName('right-arrow-btn')[0];
-const url = 'https://randomuser.me/api/?results=12';
+
+const url = 'https://randomuser.me/api/?results=12&nat=gb,us,es';
 
 //------------------------------------- 
 //  FETCH FUNCTIONS
@@ -44,27 +47,17 @@ function createEmployee(data) {
       document.querySelectorAll('.card').forEach((card, index) => {
         card.addEventListener('click', (event) => {
             employeeModal(employees[index], index);
-            
-           /* document.querySelector('.right-arrow-btn').addEventListener('click', () => {
-                employeeModal(data.results[index + 1]);
-              })
-            document.querySelector('.left-arrow-btn').addEventListener('click', () => {
-                employeeModal(data.results[index - 1]);
-             })*/
 
         });
 
       });
 
- 
     }
-
 
 
 //------------------------------------- 
 // Employee Modal Popup
 //-------------------------------------
-
 
     function employeeModal(employee, index) {
 
@@ -76,7 +69,7 @@ function createEmployee(data) {
        <div class="modal-content" data-index="${index}">
         <span class="close-button">&times;</span>
         <img src="${employee.picture.large}" alt="">
-        <h2>${employee.name.first} ${employee.name.last}</h2>
+        <h2 class="employee-name">${employee.name.first} ${employee.name.last}</h2>
         <p>${employee.email}</p>
         <p>${employee.location.city}</p>
         <span class="left-arrow-btn">&#8678;</span>
@@ -116,6 +109,31 @@ modal.addEventListener('click', (event) => {
         }
     }
 })
+
+
+// Employee Search Function
+let a = document.getElementsByClassName('employee-name');
+
+search.addEventListener('keyup', () => {
+    const input = search.value.toLowerCase();
+
+    for (let i = 0; i < a.length; i += 1) {
+        const attrData = a[i].innerHTML;
+        if (attrData.toLowerCase().indexOf(input) > -1) {
+            a[i].style.display = "";
+            } else {
+            a[i].style.display = "none";
+            }
+    }
+});
+
+search.addEventListener('search-input', () => {
+    if (event.target.value === '') {
+      for (let i = 0; i < a.length; i += 1) {
+        a[i].style.display = "";
+      }
+    }
+  });
 
 
 
