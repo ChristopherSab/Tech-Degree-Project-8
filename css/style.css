@@ -14,7 +14,7 @@
 body {
     font-family: 'Lora', serif;
     background-color: var(--color-tertiary);
-    margin: 0 1rem;
+    margin: 0 1rem;     
 }
 
 /*--------------*/
@@ -194,4 +194,5 @@ footer p {
     .card:hover {
         transform: scale(1.05);
     }
+    
 }
