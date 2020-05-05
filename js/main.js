@@ -1,7 +1,7 @@
 //------------------------------------- 
 //  MAIN VARIABLES
 //-------------------------------------
-
+const employees = [];
 const employeeBox = document.getElementsByClassName('employee-box');
 const modal = document.getElementsByClassName('modal-container')[0];
 //Arrow Buttons
@@ -25,6 +25,8 @@ fetch(url)
 function createEmployee(data) {
 
       for(let i=0; i < data.results.length; i++) {
+
+        employees.push(data.results[i]);
         employeeBox[i].innerHTML =   
         
             `<div class ="card">
@@ -41,12 +43,11 @@ function createEmployee(data) {
 
       document.querySelectorAll('.card').forEach((card, index) => {
         card.addEventListener('click', (event) => {
-            employeeModal(data.results[index]);
+            employeeModal(employees[index], index);
             
            /* document.querySelector('.right-arrow-btn').addEventListener('click', () => {
                 employeeModal(data.results[index + 1]);
               })
-
             document.querySelector('.left-arrow-btn').addEventListener('click', () => {
                 employeeModal(data.results[index - 1]);
              })*/
@@ -65,11 +66,14 @@ function createEmployee(data) {
 //-------------------------------------
 
 
-    function employeeModal(employee) {
+    function employeeModal(employee, index) {
+
+        // Formats date depending on users locale.
+        const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language); 
 
        modal.innerHTML = 
        `
-       <div class="modal-content">
+       <div class="modal-content" data-index="${index}">
         <span class="close-button">&times;</span>
         <img src="${employee.picture.large}" alt="">
         <h2>${employee.name.first} ${employee.name.last}</h2>
@@ -81,34 +85,38 @@ function createEmployee(data) {
         <address>${employee.location.street.number}, ${employee.location.street.name}, 
         ${employee.location.city}, ${employee.location.state}, 
         ${employee.location.postcode}</address>
-        <p>11.10.1991</p> 
+        <p>${dob}</p> 
        </div>`;
 
        modal.style.display = 'block';
 
+    //Event Listener to Cancel Modal When User Clicks "X"
+    const modalCancel = document.getElementsByClassName('close-button')[0];
 
-        //Event Listener to Cancel Modal When User Clicks "X"
-       const modalCancel = document.getElementsByClassName('close-button')[0];
-
-        modalCancel.addEventListener('click', () => {
-            modal.style.display = 'none';
-        })
-
-
-        //Event Listener To Move to next or previous employee
-        modal.addEventListener('click', (event) => {
-     
-            if(event.target.className == 'right-arrow-btn'){
-                console.log('The RIGHT Arrow is Working');
-            }
-
-            if(event.target.className == 'left-arrow-btn'){
-                console.log('The LEFT Arrow is Working');
-            }
-
-        })
+    modalCancel.addEventListener('click', () => {
+        modal.style.display = 'none';
+    })
 
 }
+
+//Event Listener To Move to next or previous employee
+modal.addEventListener('click', (event) => {
+    if(event.target.className === 'right-arrow-btn'){
+        let indexPosition = parseInt(modal.firstElementChild.getAttribute('data-index'));
+        indexPosition += 1;
+        if (indexPosition < 12) {
+            employeeModal(employees[indexPosition], indexPosition);
+        }
+    }
+    if(event.target.className === 'left-arrow-btn'){
+        let indexPosition = parseInt(modal.firstElementChild.getAttribute('data-index'));
+        indexPosition -= 1;
+        if (indexPosition > -1) {
+            employeeModal(employees[indexPosition], indexPosition);
+        }
+    }
+})
+
 
 
 
