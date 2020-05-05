@@ -58,9 +58,8 @@ header input {
 
 .modal-content{
     background-color: white;
-    margin: 8% auto;
+    margin: 8% .5rem;
     padding: 1.3rem 2rem;
-    width: 35%;
     box-shadow: 0 5px 8px 0 rgba(0,0,0, 0.2), 0 7px 20px 0 rgba(0,0,0, 0.17);
     position: relative;
     text-align: center;
@@ -165,6 +164,12 @@ footer p {
     .card {
         margin: 1rem;
         width: 320px;
+        height: 150px;
+    }
+
+    .modal-content {
+        width: 35%;
+        margin: 8% auto;
     }
 }
 

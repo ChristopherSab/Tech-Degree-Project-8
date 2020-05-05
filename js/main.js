@@ -37,7 +37,7 @@ function createEmployee(data) {
                 <img src="${data.results[i].picture.medium}" alt="">
             </div>
             <div class="employee-info">
-                <h2>${data.results[i].name.first} ${data.results[i].name.last}</h2>
+                <h2 class="employee-name">${data.results[i].name.first} ${data.results[i].name.last}</h2>
                 <p>${data.results[i].email}<p>
                 <p>${data.results[i].location.city}</p>
             </div>
@@ -69,7 +69,7 @@ function createEmployee(data) {
        <div class="modal-content" data-index="${index}">
         <span class="close-button">&times;</span>
         <img src="${employee.picture.large}" alt="">
-        <h2 class="employee-name">${employee.name.first} ${employee.name.last}</h2>
+        <h2>${employee.name.first} ${employee.name.last}</h2>
         <p>${employee.email}</p>
         <p>${employee.location.city}</p>
         <span class="left-arrow-btn">&#8678;</span>
@@ -111,8 +111,10 @@ modal.addEventListener('click', (event) => {
 })
 
 
+//------------------------------------- 
 // Employee Search Function
-let a = document.getElementsByClassName('employee-name');
+//-------------------------------------
+let a = document.querySelectorAll('.employee-box');
 
 search.addEventListener('keyup', () => {
     const input = search.value.toLowerCase();
