@@ -2,11 +2,11 @@
 //  MAIN VARIABLES
 //-------------------------------------
 let search = document.getElementById('search-input');
+
 const employees = [];
 const employeeBox = document.getElementsByClassName('employee-box');
 const modal = document.getElementsByClassName('modal-container')[0];
 
-//Arrow Buttons
 const previousEmployee = document.getElementsByClassName('left-arrow-btn'[0]);
 const nextEmployee = document.getElementsByClassName('right-arrow-btn')[0];
 
@@ -54,11 +54,9 @@ function createEmployee(data) {
 
     }
 
-
 //------------------------------------- 
 // Employee Modal Popup
 //-------------------------------------
-
     function employeeModal(employee, index) {
 
         // Formats date depending on users locale.
